@@ -7,10 +7,11 @@ CLASS zcl_atraccion_12 DEFINITION
 *  - *calcular_precio_entrada: sin parámetros, devuelve (RETURNING) un importe. Comportamiento del padre: **entrada gratuita (0€)*, por defecto.
 *  - *consultar_visitantes*: devuelve (RETURNING) el número de visitantes de hoy.
     METHODS:
-        constructor,
+        constructor IMPORTING i_nombre TYPE string,
         recibir_visitante,
         calcular_precio_entrada RETURNING VALUE(rv_importe) TYPE zdecimals2,
-        consultar_visitante RETURNING VALUE(rv_num_vis) TYPE i.
+        consultar_visitante RETURNING VALUE(rv_num_vis) TYPE i,
+        mostrar_nombre RETURNING VALUE(rv_nombre) TYPE string.
 
   PROTECTED SECTION.
     DATA:
@@ -27,7 +28,7 @@ CLASS zcl_atraccion_12 IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD constructor.
-    nombre = 'Atraccion'.
+    nombre = i_nombre.
     num_vis = 0.
   ENDMETHOD.
 
@@ -37,6 +38,10 @@ CLASS zcl_atraccion_12 IMPLEMENTATION.
 
   METHOD recibir_visitante.
     num_vis += 1.
+  ENDMETHOD.
+
+  METHOD mostrar_nombre.
+    rv_nombre = nombre.
   ENDMETHOD.
 
 ENDCLASS.

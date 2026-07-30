@@ -6,7 +6,8 @@ CLASS zcl_atraccion_feria_12 DEFINITION
 
   PUBLIC SECTION.
     METHODS:
-      constructor IMPORTING i_precio TYPE zdecimals2,
+      constructor IMPORTING i_nom_atraccion TYPE string
+                            i_precio TYPE zdecimals2,
       calcular_precio_entrada REDEFINITION.
   PROTECTED SECTION.
     DATA precio_fijo TYPE zdecimals2.
@@ -20,11 +21,12 @@ CLASS zcl_atraccion_feria_12 IMPLEMENTATION.
     rv_importe = precio_fijo.
   ENDMETHOD.
 
+
+
   METHOD constructor.
 
-    super->constructor( ).
+    super->constructor( i_nombre = i_nom_atraccion ).
     precio_fijo = i_precio.
-
   ENDMETHOD.
 
 ENDCLASS.
