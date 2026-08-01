@@ -48,7 +48,7 @@ CLASS zcl_prestamo_biblioteca_12 IMPLEMENTATION.
     titulo_libro = i_titulo_libro.
     devuelto = abap_false.
     total_prestamos_realizados += 1.
-    prestamos_pendientes += 1.
+      prestamos_pendientes += 1.
   ENDMETHOD.
 
   METHOD consultar_datos.
